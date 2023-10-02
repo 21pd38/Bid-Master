@@ -15,7 +15,7 @@ Firstly, requirements -
 Secondly, make sure to create necessary tables (auctioners, bidders, auction_items, bid_transactions, successful_bids)
 - Connect these tables to the python code using mysql-python-connector
 
-- You can create tables by checking 'table_creations.txt' in the same repository
+- You can create tables by checking 'table_creation.txt' in the same repository
 
 To run the code, run the main.py to access the login page, we can login as either auctioner or bidder
 
