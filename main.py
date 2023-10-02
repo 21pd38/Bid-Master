@@ -14,9 +14,9 @@ Session(app)
 
 # Establish a connection to the MySQL database
 mydb = mysql.connector.connect(
-    host='127.0.0.1',  # Replace with your MySQL host
-    user='root',  # Replace with your MySQL user
-    password='VamsKris@987',  # Replace with your MySQL password
+    host='127.0.0.1', 
+    user='root',  
+    password='VamsKris@987',  
     database='appviewx'
 )
 mycursor = mydb.cursor(buffered=True)
@@ -38,30 +38,6 @@ def is_bidder_username_taken(username):
     existing_username = mycursor.fetchone()
     return existing_username is not None
 
-# @app.route('/', methods=['GET', 'POST'])
-# def login():
-#     global logged_in
-#     global logged_in_username
-#     login_error = False
-
-#     if request.method == 'POST':
-#         if request.form.get('action') == 'login':
-#             username = request.form.get('username')
-#             password = request.form.get('password')
-
-#             query = "SELECT * FROM Auctioner WHERE username = %s AND password = %s"
-#             mycursor.execute(query, (username, password))
-#             user = mycursor.fetchone()
-
-#             if user:
-#                 logged_in = True
-#                 logged_in_username = username
-#                 return redirect(url_for('home', login_success=True))
-#             else:
-#                 login_error = True
-
-#     return render_template('login.html', login_error=login_error)
-
 @app.route('/', methods=['GET', 'POST'])
 def login():
     global logged_in
@@ -81,7 +57,6 @@ def login():
                 logged_in = True
                 logged_in_username = username
                 user_type = 'auctioner'  # Set the user type to 'auctioner'
-                # return redirect(url_for('home', login_success=True, user_type=user_type))
                 return render_template('home.html', user_type=user_type)
             else:
                 # Check if it's a bidder login
@@ -92,7 +67,6 @@ def login():
                     logged_in = True
                     logged_in_username = username
                     user_type = 'bidder'  # Set the user type to 'bidder'
-                    # return redirect(url_for('home', login_success=True, user_type=user_type))
                     return render_template('home.html', user_type=user_type)
 
                 else:
