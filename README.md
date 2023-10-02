@@ -4,7 +4,12 @@ Team members :
               - Vamsi Krishna . U (21pd38)
               - Vishwajeet Bharadwaj . S (21pt38)
 
-We have developed a Flask-based local server that creates a dynamic auctioner and bidder system. Users can log in as either auctioneers or bidders, each with distinct functionalities. Auctioneers have the ability to to create new auctions, manage their own auctions, and monitor both their own auction listings and the successful bidders. Meanwhile, bidders can participate in auctions created by auctioneers. The project also offers user-friendly dashboards and interfaces to provide a comprehensive understanding of the auction process.
+We have developed a Flask-based local server that creates a dynamic auctioner and bidder system. It is a combination of frontend, backend and mysql database framework . Users can log in as either auctioneers or bidders, each with distinct functionalities. Auctioneers have the ability to to create new auctions, manage their own auctions, and monitor both their own auction listings and the successful bidders. Meanwhile, bidders can participate in auctions created by auctioneers. The project also offers user-friendly dashboards and interfaces to provide a comprehensive understanding of the auction process.
+
+
+Frontend - Html, css, javascript
+Backend - python
+Database - Mysql
 
 Firstly, requirements -
                          visual studio code
