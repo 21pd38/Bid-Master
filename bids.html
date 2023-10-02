@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bid on Item</title>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ item.item_name }}</h1>
+        <p>Starting Price: ${{ item.starting_price }}</p>
+        <p><strong>Type:</strong> {{ item.type }}</p>
+        <p><strong>End Time:</strong> {{ item.end_time }}</p>
+        <p><strong>Description:</strong> {{ item.description }}</p>
+        <img src="data:image/jpeg;base64,{{ item.image }}" alt="Item Image" width="200" height="200">
+        <form action="/place_bid" method="POST">
+            <input type="hidden" name="item_id" value="{{ item.item_id }}">
+            <input type="hidden" name="item_name" value="{{ item.item_name }}">
+            <input type="hidden" name="starting_price" value="{{ item.starting_price }}">
+            <input type="hidden" name="image" value="{{ item.image }}">
+            <input type="hidden" name="username" value="{{ current_username }}">
+            <label for="current_price">Enter Your Bid:</label>
+            <input type="number" id="current_price" name="current_price" step="0.01">
+            <button type="submit">Place Bid</button>
+        </form>
+        <div id="bid-success-message" style="display: none; color: green;">
+            Bid placed!
+        </div>
+    </div>
+</body>
+</html>
+

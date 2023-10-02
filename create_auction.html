@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Auction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .auction-form {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .auction-form h1 {
+            font-size: 24px;
+        }
+        .form-group {
+            text-align: left;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-group select,
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group input[type="datetime-local"],
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .error-message {
+            color: red;
+        }
+        .success-message {
+            color: green;
+        }
+        .auction-item-details {
+            display: none;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create an Auction</h1>
+        <div class="error-message">
+            {% if wrong_username %}
+                Invalid username. Please enter your own username.
+            {% elif bidder_error %}
+                You are logged in as a bidder. Bidders cannot create auctions.
+            {% endif %}
+        </div>
+        <div class="success-message">
+            {% if success_message %}
+                {{ success_message }}
+            {% endif %}
+        </div>
+        <div class="auction-form" id="auction-form">
+            <form method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="item_name">Item Name:</label>
+                    <input type="text" name="item_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="type">Type:</label>
+                    <select name="type" required>
+                        <option value="art">Art</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="collectibles">Collectibles</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="starting_price">Starting Price:</label>
+                    <input type="number" name="starting_price" required>
+                </div>
+                <div class="form-group">
+                    <label for="end_time">End Time:</label>
+                    <input type="datetime-local" name="end_time" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea name="description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image (PNG only):</label>
+                    <input type="file" name="image" accept=".png" required>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <a href="/auction_item_display" class="button">Show Details</a>
+    </div>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Successful Bids</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Successful Bids</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item ID</th>
+                    <th>Item Name</th>
+                    <th>Username</th>
+                    <th>Current Price</th>
+                    <th>Current Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bid in successful_bids %}
+                <tr>
+                    <td>{{ bid[0] }}</td>
+                    <td>{{ bid[1] }}</td>
+                    <td>{{ bid[2] }}</td>
+                    <td>{{ bid[3] }}</td>
+                    <td>{{ bid[4] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+

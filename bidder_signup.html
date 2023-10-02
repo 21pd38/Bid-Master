@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bidder Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Black background */
+        }
+
+        h1 {
+            font-size: 40px;
+            margin: 40px;
+        }
+
+        form {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 400px; /* Make the container wider */
+        }
+
+        .form-group {
+            margin: 10px 0;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="date"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 20px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bidder Sign Up</h1>
+    <form action="/bidder-signup" method="POST">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" required>
+        </div>
+        <div class "form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" required>
+        </div>
+        <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" required>
+        </div>
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" name="dob" required>
+        </div>
+        <div class="form-group">
+            <label for="phone_number">Phone Number</label>
+            <input type="text" name="phone_number" required>
+        </div>
+        <div class="form-group">
+            <label for="company_name">Company Name</label>
+            <input type="text" name="company_name">
+        </div>
+        <div class="form-group">
+            <label for="company_city">Company City</label>
+            <input type="text" name="company_city">
+        </div>
+        <div class="form-group">
+            <label for="max_amount">Maximum Bidding Amount</label>
+            <input type="number" name="max_amount" required>
+        </div>
+        <button type="submit">Sign Up as Bidder</button>
+    </form>
+    <p>Already have an account? <a href="/">Log In</a></p>
+</body>
+</html>
