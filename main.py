@@ -80,7 +80,7 @@ def login():
             if user:
                 logged_in = True
                 logged_in_username = username
-                user_type = 'auctioner'  # Set the user type to 'auctioneer'
+                user_type = 'auctioner'  # Set the user type to 'auctioner'
                 # return redirect(url_for('home', login_success=True, user_type=user_type))
                 return render_template('home.html', user_type=user_type)
             else:
@@ -140,9 +140,9 @@ def view_auction():
     global logged_in
     global logged_in_username
 
-    # Check if the user is logged in as an auctioneer
+    # Check if the user is logged in as an auctioner
     if logged_in and logged_in_username:
-        # Query the database for auction items associated with the logged-in auctioneer
+        # Query the database for auction items associated with the logged-in auctioner
         query = "SELECT item_id, item_name, username, type, starting_price, end_time, image FROM auction_items WHERE username = %s"
         mycursor.execute(query, (logged_in_username,))
         data = mycursor.fetchall()
@@ -183,7 +183,7 @@ def signup():
         else:
             # Check if both company_name and company_city are provided
             if company_name and company_city:
-                # Assuming you have a database table named 'Auctioneer', insert the user data into it
+                # Assuming you have a database table named 'Auctioner', insert the user data into it
                 query = "INSERT INTO Auctioner (username, password, first_name, last_name, dob, phone_number, company_name, company_city) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
                 values = (username, password, first_name, last_name, dob, phone_number, company_name, company_city)
             elif not company_name and not company_city:
@@ -222,33 +222,6 @@ def auction_item_display():
         })
 
     return render_template('auction_item_details.html', auction_details=auction_details)
-
-# @app.route('/bidder', methods=['GET', 'POST'])
-# def bidder_login():
-#     global logged_in
-#     global logged_in_username
-#     bidder_login_error = False
-#     bidder= False
-
-#     if request.method == 'POST':
-#         if request.form.get('action') == 'login':
-#             username = request.form.get('username')
-#             password = request.form.get('password')
-
-#             query = "SELECT * FROM bidder WHERE username = %s AND password = %s"
-#             mycursor.execute(query, (username, password))
-#             user = mycursor.fetchone()
-
-#             if user:
-#                 logged_in = True
-#                 logged_in_username = username
-#                 session['username'] = username
-#                 bidder= True
-#                 return redirect(url_for('home', login_success=True))
-#             else:
-#                 bidder_login_error = True
-
-#     return render_template('bidder_login.html', bidder_login_error=bidder_login_error)
 
 @app.route('/bidder-signup', methods=['GET', 'POST'])
 def bidder_signup():
