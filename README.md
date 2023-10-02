@@ -7,15 +7,15 @@ Team members :
 We have developed a Flask-based local server that creates a dynamic auctioner and bidder system. It is a combination of frontend, backend and mysql database framework . Users can log in as either auctioneers or bidders, each with distinct functionalities. Auctioneers have the ability to to create new auctions, manage their own auctions, and monitor both their own auction listings and the successful bidders. Meanwhile, bidders can participate in auctions created by auctioneers. The project also offers user-friendly dashboards and interfaces to provide a comprehensive understanding of the auction process.
 
 
-Frontend - Html, css, javascript
-Backend - python
-Database - Mysql
+Frontend - Html, css, javascript;
+Backend - python;
+Database - Mysql;
 
 Firstly, requirements -
-                         visual studio code
-                         flask
-                         mysql workbench 8.0
-                         mysql-python-connector
+                         visual studio code;
+                         flask;
+                         mysql workbench 8.0;
+                         mysql-python-connector;
 
 Secondly, make sure to create necessary tables (auctioners, bidders, auction_items, bid_transactions, successful_bids)
 - Connect these tables to the python code using mysql-python-connector
