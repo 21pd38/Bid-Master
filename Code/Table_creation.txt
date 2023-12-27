@@ -1,0 +1,61 @@
+
+# table creations
+
+CREATE TABLE auctioner (
+    username VARCHAR(50) NOT NULL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    dob DATE NOT NULL,
+    phone_number VARCHAR(15) NOT NULL,
+    company_name VARCHAR(30),
+    company_city VARCHAR(30)
+);
+
+
+CREATE TABLE auction_items (
+    item_id INT AUTO_INCREMENT PRIMARY KEY,
+    item_name VARCHAR(100),
+    username VARCHAR(50),
+    type VARCHAR(100),
+    starting_price DECIMAL(10, 2),
+    end_time DATETIME,
+    description TEXT,
+    image LONGBLOB,                                         -- Attribute to store the PNG image
+    FOREIGN KEY (username) REFERENCES auctioner(username)
+);
+
+CREATE TABLE bidder (
+    username VARCHAR(50) NOT NULL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    dob DATE NOT NULL,
+    phone_number VARCHAR(15) NOT NULL,
+    company_name VARCHAR(30),
+    company_city VARCHAR(30),
+    max_amount DECIMAL(10, 2)
+);
+
+
+CREATE TABLE bid_transactions (
+    bid_id INT AUTO_INCREMENT PRIMARY KEY,
+    item_id INT,
+    item_name VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL,
+    starting_price DECIMAL(10, 2) NOT NULL,
+    current_price DECIMAL(10, 2),
+    CurrentTime DATETIME
+);
+
+CREATE TABLE successful_bids (
+    sbid_id INT PRIMARY KEY AUTO_INCREMENT,
+    bid_id INT,
+    item_id INT,
+    item_name VARCHAR(50),
+    username VARCHAR(50),
+    Current_price DECIMAL(10, 2), 
+    CurrentTime DATETIME,
+    FOREIGN KEY (bid_id) REFERENCES bid_transactions(bid_id)
+);
+
