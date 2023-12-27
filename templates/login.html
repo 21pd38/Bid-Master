@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>V&V Auction</title>
+    <style>
+        body {
+            background: url('/static/Wallpaper.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .toggle-buttons {
+            display: flex;
+            justify-content: center;
+            margin: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .toggle-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #28a745; /* Green background */
+            color: #fff; /* White text color */
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            z-index: 1;
+            border-radius: 5px;
+        }
+
+        .container-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 5px;
+            width: 350px;
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .container.active {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+
+        .container h2 {
+            font-size: 28px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .container label {
+            display: block;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .container input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .container button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .container .btn-primary {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .container .btn-primary:hover {
+            background-color: #1e7e34;
+        }
+
+        .signup-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: #007bff;
+            margin-top: 10px;
+        }
+
+        .logo {
+            font-size: 36px;
+            font-family: cursive;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(102, 255, 102, 0.8); /* Neon Green Shadow */
+        }
+    </style>
+</head>
+<body>
+    <h1 class="logo">V&V Auction</h1>
+
+    <div class="toggle-buttons">
+        <button class="toggle-button" id="auctioneer-button">Auctioneer</button>
+        <button class="toggle-button" id="bidder-button">Bidder</button>
+    </div>
+
+    <div class="container-wrapper">
+        <div class="container" id="auctioneer-container">
+            <h2>Auctioneer Login</h2>
+            <form action="/" method="POST">
+                <input type="hidden" name="action" value="login">
+                <label for="username">Auctioner Username</label>
+                <input name="username" type="text" id="username" placeholder="Enter username" required>
+                <label for="password">Auctioner Password</label>
+                <input name="password" type="password" id="password" placeholder="Enter password" required>
+                <button type="submit" class="btn-primary">Log In</button>
+                <a href="/signup" class="signup-button">Sign Up for Auctioner</a>
+            </form>
+        </div>
+        
+        <div class="container" id="bidder-container">
+            <h2>Bidder Login</h2>
+            <form action="/" method="POST">
+                <input type="hidden" name="action" value="login">
+                <label for="bidder-username">Bidder Username</label>
+                <input name="username" type="text" id="bidder-username" placeholder="Enter username" required>
+                <label for "bidder-password">Bidder Password</label>
+                <input name="password" type="password" id="bidder-password" placeholder="Enter password" required>
+                <button type="submit" class="btn-primary">Log In</button>
+                <a href="/bidder-signup" class="signup-button">Sign Up for Bidder</a>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const auctioneerButton = document.getElementById('auctioneer-button');
+        const bidderButton = document.getElementById('bidder-button');
+        const auctioneerContainer = document.getElementById('auctioneer-container');
+        const bidderContainer = document.getElementById('bidder-container');
+
+        auctioneerButton.addEventListener('click', () => {
+            auctioneerContainer.classList.add('active');
+            bidderContainer.classList.remove('active');
+        });
+
+        bidderButton.addEventListener('click', () => {
+            auctioneerContainer.classList.remove('active');
+            bidderContainer.classList.add('active');
+        });
+    </script>
+</body>
+</html>
+

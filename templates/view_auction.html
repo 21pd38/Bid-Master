@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Auction Items</title>
+    <style>
+        body {
+            background: url('/static/Wallpaper.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: #121111;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e2e2e2;
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-view {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .btn-view:hover {
+            background-color: #28a745; /* Green on hover */
+        }
+
+        .btn-delete {
+            padding: 8px 15px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .btn-delete:hover {
+            background-color: #c82333; /* Red on hover */
+        }
+
+        .scrollable {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .description {
+            max-width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Auction Items</h1>
+        <table class="scrollable">
+            <thead>
+                <tr>
+                    <th>Item id</th>
+                    <th>Item Name</th>
+                    <th>Type</th>
+                    <th>Starting Price</th>
+                    <th>End Time</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>View</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in auction_details %}
+                <tr>
+                    <td>{{ item.item_id }}</td>
+                    <td>{{ item.item_name }}</td>
+                    <td>{{ item.type }}</td>
+                    <td>{{ item.starting_price }}</td>
+                    <td>{{ item.end_time }}</td>
+                    <td class="description">{{ item.description }}</td>
+                    <td><img src="data:image/jpeg;base64,{{ item.image }}" alt="Item Image"></td>
+                    <td class="btn-container">
+                        <a href="{{ url_for('view_auction_status', item_id=item.item_id) }}" class="btn-view">View Auction Status</a>
+                    </td>
+                    <td class="btn-container">
+                        <a href="{{ url_for('delete_auction_item', item_id=item.item_id) }}" class="btn-delete">Delete Auction Item</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+
+

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bid on {{ item_name }}</title>
+    <style>
+        body {
+            background: url('/static/Wallpaper.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            text-align: center;
+            margin: 50px auto;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 36px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .alert {
+            background-color: rgba(220, 53, 69, 0.9); /* Red background for alerts */
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn {
+            margin: 20px;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .bid-form-container {
+            background-color: rgba(13, 13, 13, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .bid-form-container label {
+            display: block;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .bid-form-container input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .bid-form-container button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .bid-form-container .btn-primary {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .bid-form-container .btn-primary:hover {
+            background-color: #1e7e34;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bid on {{ item_name }}</h1>
+        <p>Item ID: {{ item_id }}</p>
+        <p>Starting Price: ${{ starting_price }}</p>
+
+        <!-- Flash messages to display bid status -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="flash-messages">
+            {% for message in messages %}
+            <li class="alert">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+        <div class="bid-form-container">
+            <form method="post">
+                <label for="current_price">Enter Your Bid:</label>
+                <input type="number" id="current_price" name="current_price" step="0.01">
+                <button type="submit" class="btn btn-primary">Place Bid</button>
+            </form>
+        </div>
+
+        <!-- Display the details after form submission -->
+        {% if item_id and item_name and username and starting_price and current_price and CurrentTime %}
+            <h2>Details After Submission:</h2>
+            <p>Item ID: {{ item_id }}</p>
+            <p>Item Name: {{ item_name }}</p>
+            <p>Username: {{ username }}</p>
+            <p>Starting Price: ${{ starting_price }}</p>
+            <p>Current Price: ${{ current_price }}</p>
+            <p>Current Time: {{ CurrentTime }}</p>
+        {% endif %}
+
+        <!-- Display the maximum previous bid -->
+        {% if max_previous_bid %}
+            <h2>Maximum Previous Bid:</h2>
+            <p>${{ max_previous_bid }}</p>
+        {% endif %}
+
+        <!-- Button to return to the first page -->
+        <a href="/" class="btn btn-primary">Back to login page</a>
+    </div>
+</body>
+</html>

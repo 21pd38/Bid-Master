@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auction Status</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Auction Status</h1>
+        <p>{{item_id}}</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Username</th>
+                    <th>Starting Price</th>
+                    <th>Current Price</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for status in auction_status %}
+                <tr>
+                    <td>{{ status[1] }}</td>
+                    <td>{{ status[3] }}</td>
+                    <td>{{ status[4] }}</td>
+                    <td>{{ status[5] }}</td>
+                    <td>{{ status[6] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

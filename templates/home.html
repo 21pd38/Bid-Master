@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <style>
+        body {
+            background: url('/static/Wallpaper.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            width: 80%;
+            max-width: 800px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 36px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .alert {
+            background-color: rgba(76, 175, 80, 0.9); /* Translucent green background */
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .btn-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            margin: 20px;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Your Dashboard</h1>
+        <div class="alert">Login Successful</div>
+        <p>User Type: {{ user_type }}</p>
+
+        <div class="btn-container">
+            {% if user_type == 'auctioner' %}
+                <a href="{{ url_for('create_auction') }}" class="btn">Create Auction</a>
+                <a href="{{ url_for('view_auction') }}" class="btn">View Auction</a>
+                <a href="{{ url_for('view_successful_bids') }}" class="btn">View Successful Bids</a>
+            {% elif user_type == 'bidder' %}
+                <a href="{{ url_for('bid_auctions') }}" class="btn">Bid Auctions</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
